@@ -19,7 +19,7 @@ function fadeInPage() {
     const pageContainer = document.querySelector('body'); // Target the body for full page fade
     pageContainer.style.opacity = 0;
     let op = 0;  // initial opacity
-    let delay = 2000; // Delay in milliseconds (1000ms = 1 second)
+    let delay = 1500; // Delay in milliseconds (1000ms = 1 second)
 
     function fade() {
         op += 0.07; // smaller increment for slower fade
