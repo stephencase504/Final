@@ -22,7 +22,7 @@ function fadeInPage() {
     let delay = 2000; // Delay in milliseconds (1000ms = 1 second)
 
     function fade() {
-        op += 0.05; // smaller increment for slower fade
+        op += 0.07; // smaller increment for slower fade
         pageContainer.style.opacity = op;
         if (op < 1) {
             requestAnimationFrame(fade);
