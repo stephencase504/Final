@@ -14,21 +14,25 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-// Function to fade in the page
+// Function to fade in the page with a delay
 function fadeInPage() {
     const pageContainer = document.querySelector('body'); // Target the body for full page fade
     pageContainer.style.opacity = 0;
     let op = 0;  // initial opacity
+    let delay = 1000; // Delay in milliseconds (1000ms = 1 second)
 
     function fade() {
-        op += 0.07; // adjust for desired speed
+        op += 0.05; // smaller increment for slower fade
         pageContainer.style.opacity = op;
         if (op < 1) {
             requestAnimationFrame(fade);
         }
     }
-    fade();
+
+    // Set a delay before starting the fade in
+    setTimeout(fade, delay);
 }
+
 
 // Function to fade out the page
 function fadeOutPage() {
