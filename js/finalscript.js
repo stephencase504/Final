@@ -16,15 +16,37 @@ document.addEventListener("keydown", function (event) {
 
 // Function to fade in the page
 function fadeInPage() {
-    const pageContainer = document.querySelector('.page-container');
-    pageContainer.style.opacity = 1;
+    const pageContainer = document.querySelector('body'); // Target the body for full page fade
+    pageContainer.style.opacity = 0;
+    let op = 0;  // initial opacity
+
+    function fade() {
+        op += 0.07; // adjust for desired speed
+        pageContainer.style.opacity = op;
+        if (op < 1) {
+            requestAnimationFrame(fade);
+        }
+    }
+    fade();
 }
 
 // Function to fade out the page
 function fadeOutPage() {
-    const pageContainer = document.querySelector('.page-container');
-    pageContainer.style.opacity = 0;
+    const pageContainer = document.querySelector('body'); // Target the body for full page fade
+    let op = 1;  // initial opacity
+
+    function fade() {
+        op -= 0.07; // adjust for desired speed
+        pageContainer.style.opacity = op;
+        if (op > 0) {
+            requestAnimationFrame(fade);
+        } else {
+            pageContainer.style.display = 'none';
+        }
+    }
+    fade();
 }
+
 
 // Example: Listen for link clicks and initiate the fade effect
 const links = document.querySelectorAll('a'); // Selects all anchor selectors
@@ -34,12 +56,13 @@ links.forEach(link => {
         fadeOutPage(); // Fade out the current page
         setTimeout(() => {
             window.location.href = link.href; // Navigate to the new page
-        }, 350); // Adjust the delay to match your transition duration
+        }, 300); // Adjust the delay to match your transition duration
     });
 });
 
 // When the new page loads, call fadeInPage()
 window.addEventListener('load', fadeInPage);
+
 
 // Function for back to top button
 const showOnPx = 100;
